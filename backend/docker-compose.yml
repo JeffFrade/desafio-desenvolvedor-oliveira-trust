@@ -2,7 +2,7 @@ version: '3.5'
 services:
   php-fpm:
     build: ./docker/php
-    image: teclicita/ot-backend:php-fpm
+    image: jefffrade/ot-backend:php-fpm
     restart: on-failure
     container_name: ot-backend-php-fpm
     command: php-fpm
@@ -22,7 +22,7 @@ services:
 
   nginx:
     build: ./docker/nginx
-    image: teclicita/ot-backend:nginx
+    image: jefffrade/ot-backend:nginx
     restart: on-failure
     container_name: ot-backend-nginx
     command: nginx -g "daemon off;"
@@ -42,7 +42,7 @@ services:
 
   mysql:
     build: ./docker/mysql
-    image: teclicita/ot-backend:mysql
+    image: jefffrade/ot-backend:mysql
     restart: on-failure
     container_name: ot-backend-mysql
     volumes:
@@ -64,7 +64,7 @@ services:
 
   mongodb:
     build: ./docker/mongodb
-    image: teclicita/ot-backend:mongodb
+    image: jefffrade/ot-backend:mongodb
     restart: on-failure
     container_name: ot-backend-mongodb
     volumes:
