@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'currencies'], function () {
     Route::get('/', 'CurrencyController@index')->name('currencies.index');
 });
+
+Route::group(['prefix' => 'payment-methods'], function () {
+    Route::get('/', 'PaymentMethodController@index')->name('payment-methods.index');
+});

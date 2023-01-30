@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Repositories\Models;
-use Database\Factories\CurrencyFactory;
+
+use Database\Factories\PaymentMethodFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Currency extends Model
+class PaymentMethod extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -19,16 +20,15 @@ class Currency extends Model
      * @var array
      */
     protected $fillable = [
-        'code',
         'name',
-        'show'
+        'rate'
     ];
 
     /**
-     * @return CurrencyFactory
+     * @return PaymentMethodFactory
      */
-    public static function newFactory(): CurrencyFactory
+    public static function newFactory(): PaymentMethodFactory
     {
-        return CurrencyFactory::new();
+        return PaymentMethodFactory::new();
     }
 }
