@@ -62,7 +62,8 @@ class PriceService
         $discounts = $this->calculatePercentage($discounts, $percentagePaymentMethod);
 
         $price = $this->awesomeApiService->getPrice($currency->code);
-        $conversion = $discounts * $price->ask;
+        $priceConversion = $price->ask;
+        $conversion = $discounts * $priceConversion;
 
         $data = [
             'original_value' => $data['original_value'],
@@ -72,6 +73,7 @@ class PriceService
             ],
             'converted_value' => round($conversion, 2),
             'conversion_api_return' => $price,
+            'conversion_price' => substr($priceConversion, 0, 4),
             'id_currency_base' => 1,
             'id_currency_to' => $currency->id,
             'id_user' => 1,
