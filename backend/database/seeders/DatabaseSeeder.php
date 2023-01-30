@@ -20,5 +20,23 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        \App\Repositories\Models\Currency::factory()->create([
+            'code' => 'BRL',
+            'name' => 'Real Brasileiro',
+            'show' => 0
+        ]);
+
+        \App\Repositories\Models\Currency::factory()->create([
+            'code' => 'USD',
+            'name' => 'Dólar Americano',
+            'show' => 1
+        ]);
+
+        \App\Repositories\Models\Currency::factory()->create([
+            'code' => 'EUR',
+            'name' => 'Euro',
+            'show' => 1
+        ]);
     }
 }
