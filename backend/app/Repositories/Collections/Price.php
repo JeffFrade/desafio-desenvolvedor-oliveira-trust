@@ -17,7 +17,8 @@ class Price extends Model
     protected $fillable = [
         'original_value',
         'discounts',
-        'total_value',
+        'converted_value',
+        'conversion_api_return',
         'id_currency_base',
         'id_currency_to',
         'id_user',

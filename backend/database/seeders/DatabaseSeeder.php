@@ -41,12 +41,12 @@ class DatabaseSeeder extends Seeder
 
         \App\Repositories\Models\PaymentMethod::factory()->create([
             'name' => 'Boleto',
-            'rate' => 1.45
+            'rate' => 0.0145
         ]);
 
         \App\Repositories\Models\PaymentMethod::factory()->create([
             'name' => 'Cartão de Crédito',
-            'rate' => 7.63
+            'rate' => 0.0763
         ]);
     }
 }

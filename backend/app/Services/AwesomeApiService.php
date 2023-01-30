@@ -26,6 +26,6 @@ class AwesomeApiService
     public function getPrice(string $convertTo): mixed
     {
         $response = $this->client->get('/BRL-' . $convertTo);
-        return json_decode($response->getBody());
+        return json_decode($response->getBody())[0];
     }
 }

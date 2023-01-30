@@ -3,6 +3,8 @@
 namespace App\Http;
 
 use App\Core\Support\Controller;
+use App\Exceptions\CurrencyNotFoundException;
+use App\Exceptions\PaymentMethodNotFoundException;
 use App\Services\PriceService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -34,9 +36,15 @@ class PriceController extends Controller
      */
     public function store(Request $request)
     {
-        $params = $this->toValidate($request);
+        try {
+            $params = $this->toValidate($request);
 
-        return $this->successResponse($this->priceService->store($params));
+            return $this->successResponse($this->priceService->store($params));
+        } catch (CurrencyNotFoundException | PaymentMethodNotFoundException $e) {
+            return response()->json([]);
+        } catch (ValidationException $e) {
+            return response()->json([]);
+        }
     }
 
      /**
