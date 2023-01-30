@@ -21,3 +21,8 @@ Route::group(['prefix' => 'currencies'], function () {
 Route::group(['prefix' => 'payment-methods'], function () {
     Route::get('/', 'PaymentMethodController@index')->name('payment-methods.index');
 });
+
+Route::group(['prefix' => 'prices'], function () {
+    Route::get('/', 'PriceController@index')->name('prices.index');
+    Route::post('/', 'PriceController@store')->name('prices.store');
+});
