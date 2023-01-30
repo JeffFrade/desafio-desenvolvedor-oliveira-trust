@@ -41,9 +41,9 @@ class PriceController extends Controller
 
             return $this->successResponse($this->priceService->store($params));
         } catch (CurrencyNotFoundException | PaymentMethodNotFoundException $e) {
-            return response()->json([]);
+            return $this->errorResponse($e, 404);
         } catch (ValidationException $e) {
-            return response()->json([]);
+            return $this->errorResponse($e);
         }
     }
 
