@@ -14,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => 'currencies'], function () {
+    Route::get('/', 'CurrencyController@index')->name('currencies.index');
+});
+
+Route::group(['prefix' => 'payment-methods'], function () {
+    Route::get('/', 'PaymentMethodController@index')->name('payment-methods.index');
+});
+
+Route::group(['prefix' => 'prices'], function () {
+    Route::get('/{id}', 'PriceController@index')->name('prices.index');
+    Route::post('/', 'PriceController@store')->name('prices.store');
 });

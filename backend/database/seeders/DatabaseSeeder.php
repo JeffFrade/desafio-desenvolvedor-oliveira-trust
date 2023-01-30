@@ -20,5 +20,33 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        \App\Repositories\Models\Currency::factory()->create([
+            'code' => 'BRL',
+            'name' => 'Real Brasileiro',
+            'show' => 0
+        ]);
+
+        \App\Repositories\Models\Currency::factory()->create([
+            'code' => 'USD',
+            'name' => 'Dólar Americano',
+            'show' => 1
+        ]);
+
+        \App\Repositories\Models\Currency::factory()->create([
+            'code' => 'EUR',
+            'name' => 'Euro',
+            'show' => 1
+        ]);
+
+        \App\Repositories\Models\PaymentMethod::factory()->create([
+            'name' => 'Boleto',
+            'rate' => 0.0145
+        ]);
+
+        \App\Repositories\Models\PaymentMethod::factory()->create([
+            'name' => 'Cartão de Crédito',
+            'rate' => 0.0763
+        ]);
     }
 }
