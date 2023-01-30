@@ -40,9 +40,14 @@ class PriceService
         $this->paymentMethodService = new PaymentMethodService();
     }
 
-    public function index()
+    /**
+     * @param int $id
+     * @return mixed
+     */
+    public function index(int $id)
     {
-        // TODO: Implement index method
+        // TODO: Implement user verification
+        return $this->priceRepository->index($id);
     }
 
     public function store(array $data)

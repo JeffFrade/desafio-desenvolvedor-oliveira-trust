@@ -23,6 +23,6 @@ Route::group(['prefix' => 'payment-methods'], function () {
 });
 
 Route::group(['prefix' => 'prices'], function () {
-    Route::get('/', 'PriceController@index')->name('prices.index');
+    Route::get('/{id}', 'PriceController@index')->name('prices.index');
     Route::post('/', 'PriceController@store')->name('prices.store');
 });

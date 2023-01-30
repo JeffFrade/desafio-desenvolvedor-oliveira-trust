@@ -25,9 +25,14 @@ class PriceController extends Controller
         $this->priceService = $priceService;
     }
 
-    public function index()
+    /**
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function index(int $id)
     {
-        // TODO: Implement Price Index
+        // TODO: Implement user verification
+        return $this->successResponse($this->priceService->index($id));
     }
 
     /**
