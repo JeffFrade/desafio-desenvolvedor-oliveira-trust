@@ -27,7 +27,8 @@ class Price extends Model
         'id_currency_base',
         'id_currency_to',
         'id_user',
-        'id_payment_method'
+        'id_payment_method',
+        'email'
     ];
 
     /**

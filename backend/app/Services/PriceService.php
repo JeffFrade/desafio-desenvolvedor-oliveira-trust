@@ -2,10 +2,12 @@
 
 namespace App\Services;
 
+use App\Mail\NewPrice;
 use App\Repositories\PriceRepository;
 use App\Services\AwesomeApiService;
 use App\Services\CurrencyService;
 use App\Services\PaymentMethodService;
+use Illuminate\Support\Facades\Mail;
 
 class PriceService
 {
@@ -46,7 +48,6 @@ class PriceService
      */
     public function index(int $id)
     {
-        // TODO: Implement user verification
         return $this->priceRepository->index($id);
     }
 
@@ -77,10 +78,18 @@ class PriceService
             'id_currency_base' => 1,
             'id_currency_to' => $currency->id,
             'id_user' => 1,
-            'id_payment_method' => $paymentMethod->id
+            'id_payment_method' => $paymentMethod->id,
+            'email' => $data['email']
         ];
 
-        return $this->priceRepository->create($data);
+        $this->priceRepository->create($data);
+
+        $data['payment_method'] = $this->paymentMethodService->existsPaymentMethod($data['id_payment_method']);
+        $data['currency'] = $this->currencyService->existsCurrency($data['id_currency_to']);
+
+        Mail::to($data['email'])->send(new NewPrice($data));
+
+        return $data;
     }
 
     /**

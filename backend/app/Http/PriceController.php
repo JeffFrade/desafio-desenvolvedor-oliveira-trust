@@ -31,7 +31,6 @@ class PriceController extends Controller
      */
     public function index(int $id)
     {
-        // TODO: Implement user verification
         return $this->successResponse($this->priceService->index($id));
     }
 
@@ -60,6 +59,7 @@ class PriceController extends Controller
     {
         $toValidateArr = [
             'original_value' => 'required|numeric|min:1000|max:100000',
+            'email' => 'required',
             'id_currency' => 'required|numeric',
             'id_payment_method' => 'required|numeric'
         ];
