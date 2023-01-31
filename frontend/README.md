@@ -1,24 +1,19 @@
-# frontend
+# Teste Oliveira Trust (Frontend)
+---
 
-## Project setup
-```
-npm install
-```
+Nessa parte do repositório, encontra-se a parte de frontend do teste, um cliente em `Vue.js` que consome a `API`.
+ Abaixo será explicado como o fazer o projeto funcionar.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Execução do Frontend
+---
+- Rodar `npm install`.
+- Rodar `npm run serve`. (A aplicação funcionará na porta `8080`)
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Futuras Melhorias
+---
+- Registro de usuários.
+- Implementação de Login utilizando `JWT`.
+- Separação das cotações por usuário.
+- Refatoração da lógica do projeto como um todo.
+- Painel administrativo para gerenciar o sistema.
+- Melhorias no visual do sistem.
