@@ -8,7 +8,11 @@
             <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <router-link to="/" class="nav-link active" aria-current="page" href="#">Cotações</router-link>
+                    <router-link to="/" class="nav-link" aria-current="page" href="#">Suas Cotações</router-link>
+                </li>
+
+                <li class="nav-item">
+                    <router-link to="/store" class="nav-link" aria-current="page" href="#">Nova Cotação</router-link>
                 </li>
             </ul>
             </div>
