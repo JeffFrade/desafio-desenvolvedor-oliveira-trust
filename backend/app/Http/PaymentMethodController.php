@@ -21,7 +21,7 @@ class PaymentMethodController extends Controller
         $this->paymentMethodService = $paymentMethodService;
     }
 
-    /**
+    /**s
      * @return JsonResponse
      */
     public function index()

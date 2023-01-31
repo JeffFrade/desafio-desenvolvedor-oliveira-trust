@@ -31,7 +31,6 @@ class PriceController extends Controller
      */
     public function index(int $id)
     {
-        // TODO: Implement user verification
         return $this->successResponse($this->priceService->index($id));
     }
 
@@ -43,12 +42,11 @@ class PriceController extends Controller
     {
         try {
             $params = $this->toValidate($request);
+            $message = 'Cotação cadastrada com sucesso!';
 
-            return $this->successResponse($this->priceService->store($params));
+            return $this->successResponse($this->priceService->store($params), $message);
         } catch (CurrencyNotFoundException | PaymentMethodNotFoundException $e) {
             return $this->errorResponse($e, 404);
-        } catch (ValidationException $e) {
-            return $this->errorResponse($e);
         }
     }
 
@@ -61,6 +59,7 @@ class PriceController extends Controller
     {
         $toValidateArr = [
             'original_value' => 'required|numeric|min:1000|max:100000',
+            'email' => 'required',
             'id_currency' => 'required|numeric',
             'id_payment_method' => 'required|numeric'
         ];

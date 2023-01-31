@@ -21,6 +21,12 @@ class PriceRepository extends AbstractRepository
      */
     public function index(int $id): mixed
     {
-        return $this->model->where('id_user', $id)->get();
+        return $this->model->where('id_user', $id)
+            ->with([
+                'paymentMethod',
+                'currencyBase',
+                'currencyTo'
+                ])
+            ->get();
     }
 }

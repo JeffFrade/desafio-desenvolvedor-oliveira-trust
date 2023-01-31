@@ -2,10 +2,12 @@
 
 namespace App\Services;
 
+use App\Mail\NewPrice;
 use App\Repositories\PriceRepository;
 use App\Services\AwesomeApiService;
 use App\Services\CurrencyService;
 use App\Services\PaymentMethodService;
+use Illuminate\Support\Facades\Mail;
 
 class PriceService
 {
@@ -46,7 +48,6 @@ class PriceService
      */
     public function index(int $id)
     {
-        // TODO: Implement user verification
         return $this->priceRepository->index($id);
     }
 
@@ -62,7 +63,8 @@ class PriceService
         $discounts = $this->calculatePercentage($discounts, $percentagePaymentMethod);
 
         $price = $this->awesomeApiService->getPrice($currency->code);
-        $conversion = $discounts * $price->ask;
+        $priceConversion = $price->ask;
+        $conversion = $discounts * $priceConversion;
 
         $data = [
             'original_value' => $data['original_value'],
@@ -72,13 +74,22 @@ class PriceService
             ],
             'converted_value' => round($conversion, 2),
             'conversion_api_return' => $price,
+            'conversion_price' => substr($priceConversion, 0, 4),
             'id_currency_base' => 1,
             'id_currency_to' => $currency->id,
             'id_user' => 1,
-            'id_payment_method' => $paymentMethod->id
+            'id_payment_method' => $paymentMethod->id,
+            'email' => $data['email']
         ];
 
-        return $this->priceRepository->create($data);
+        $this->priceRepository->create($data);
+
+        $data['payment_method'] = $this->paymentMethodService->existsPaymentMethod($data['id_payment_method']);
+        $data['currency'] = $this->currencyService->existsCurrency($data['id_currency_to']);
+
+        Mail::to($data['email'])->send(new NewPrice($data));
+
+        return $data;
     }
 
     /**
