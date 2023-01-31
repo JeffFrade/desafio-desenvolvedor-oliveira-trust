@@ -8,14 +8,21 @@
 
         <form @submit.stop.prevent="save" id="new_price" name="new_price">
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <div class="form-group">
                         <label for="original_value">Valor:</label>
                         <input type="number" id="original_value" name="original_value" class="form-control" placeholder="Valor" step="0.01" min="0" v-model="price.original_value">
                     </div>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="E-mail" v-model="price.email">
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
                     <div class="form-group">
                         <label for="id_currency">Moeda Desejada:</label>
                         <select id="id_currency" name="id_currency" class="form-control" v-model="price.id_currency">
@@ -24,7 +31,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <div class="form-group">
                         <label for="id_payment_method">Método de Pagamento:</label>
                         <select id="id_payment_method" name="id_payment_method" class="form-control" v-model="price.id_payment_method">
@@ -50,6 +57,7 @@
             return {
                 price: {
                     original_value: '',
+                    email: '',
                     id_currency: '',
                     id_payment_method: ''
                 }
