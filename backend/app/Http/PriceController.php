@@ -43,12 +43,11 @@ class PriceController extends Controller
     {
         try {
             $params = $this->toValidate($request);
+            $message = 'Cotação cadastrada com sucesso!';
 
-            return $this->successResponse($this->priceService->store($params));
+            return $this->successResponse($this->priceService->store($params), $message);
         } catch (CurrencyNotFoundException | PaymentMethodNotFoundException $e) {
             return $this->errorResponse($e, 404);
-        } catch (ValidationException $e) {
-            return $this->errorResponse($e);
         }
     }
 

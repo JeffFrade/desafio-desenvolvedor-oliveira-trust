@@ -178,5 +178,8 @@ return [
         'year'                  => 'ano',
         'email'                 => 'e-mail',
         'remember'              => 'lembrar-me',
+        'original_value'        => 'valor',
+        'id_currency'           => 'moeda desejada',
+        'id_payment_method'     => 'método de pagamento'
     ],
 ];

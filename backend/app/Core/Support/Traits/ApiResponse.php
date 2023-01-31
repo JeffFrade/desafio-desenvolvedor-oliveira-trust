@@ -8,12 +8,14 @@ trait ApiResponse
 {
     /**
      * @param mixed $data
+     * @param string $message
      * @return JsonResponse
      */
-    protected function successResponse($data)
+    protected function successResponse($data, string $message = '')
     {
         return response()->json([
-            'data' => $data
+            'data' => $data,
+            'message' => $message
         ], 200);
     }
 
@@ -27,7 +29,6 @@ trait ApiResponse
         return response()->json([
             'message' => $e->getMessage(),
             'code' => $e->getCode(),
-            'trace' => $e->getTrace()
         ], $httpStatus);
     }
 }
